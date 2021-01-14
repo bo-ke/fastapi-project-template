@@ -1,0 +1,6 @@
+fastapi == 0.63.0
+uvicorn == 0.13.3
+aliyun-python-sdk-core == 2.13.30
+psycopg2-binary == 2.8.6
+async-exit-stack == 1.0.1
+async-generator == 1.10
