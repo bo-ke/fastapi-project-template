@@ -9,9 +9,23 @@ from starlette.middleware.cors import CORSMiddleware
 from fastapi.exceptions import HTTPException, RequestValidationError
 import uvicorn
 
+from api.errors import http_error_handler, http422_error_handler
+from api.routes.api import router as api_router
+
 
 def get_application():
     application = FastAPI()
+    application.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    application.add_exception_handler(HTTPException, http_error_handler)
+    application.add_exception_handler(
+        RequestValidationError, http422_error_handler)
+    application.include_router(api_router, prefix="/api")
     return application
 
 
