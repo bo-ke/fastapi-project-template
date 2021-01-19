@@ -6,7 +6,7 @@
 '''
 from fastapi import APIRouter
 
-from schemas.response import ResponseModel
+from schemas.response_model import ResponseModel
 
 
 router = APIRouter()

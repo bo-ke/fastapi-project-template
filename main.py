@@ -11,10 +11,11 @@ import uvicorn
 
 from api.errors import http_error_handler, http422_error_handler
 from api.routes.api import router as api_router
+from api.responses import APIResponse
 
 
 def get_application():
-    application = FastAPI()
+    application = FastAPI(default_response_class=APIResponse)
     application.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
